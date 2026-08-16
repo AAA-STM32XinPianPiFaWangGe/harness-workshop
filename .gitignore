@@ -1,5 +1,5 @@
-﻿node_modules/
-*.log
+node_modules/
 .DS_Store
 Thumbs.db
+*.log
 workshop-items.json
