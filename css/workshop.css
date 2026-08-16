@@ -523,6 +523,11 @@ input { font-family: inherit; }
 .rating-num { font-size: 12px; color: var(--text-dim); font-weight: 600; }
 .rating-count { font-size: 11px; color: var(--text-muted); }
 
+/* GitHub 星标（替代 Steam 五星评分） */
+.gh-stars { display: inline-flex; align-items: center; gap: 4px; color: var(--gold); font-size: 13px; font-weight: 600; line-height: 1; }
+.gh-stars svg { flex: none; }
+.gh-stars + .rating-count { margin-left: 2px; }
+
 .card-desc {
   margin-top: 8px;
   font-size: 12px;

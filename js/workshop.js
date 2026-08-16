@@ -30,7 +30,7 @@
     popular:      { label: '最热门',     desc: '综合热度权重' },
     subscribers:  { label: '最多订阅',   desc: '按订阅数降序' },
     updated:      { label: '最近更新',   desc: '按更新时间降序' },
-    rating:       { label: '最高评分',   desc: '按评分降序' },
+    rating:       { label: '最多星标',   desc: '按 GitHub 星标数降序' },
     views:        { label: '最多浏览',   desc: '按浏览量降序' },
   }
 
@@ -122,13 +122,11 @@
     return s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   }
 
-  /** 星级评分：灰底五星 + 金色覆盖层按比例裁剪 */
-  function starsHTML(rating) {
-    const pct = Math.max(0, Math.min(5, Number(rating) || 0)) / 5 * 100
-    return `<span class="stars" title="评分 ${Number(rating).toFixed(1)} / 5">
-      <span class="stars-bg">★★★★★</span>
-      <span class="stars-fg" style="width:${pct}%">★★★★★</span>
-    </span>`
+  /** GitHub 星标：Octicon 星形图标 + 格式化数量（替代 Steam 式五星评分） */
+  function githubStarsHTML(stars) {
+    const n = Number(stars) || 0
+    const icon = '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>'
+    return `<span class="gh-stars" title="GitHub 星标 ${fmtNum(n)}">${icon}${fmtNum(n)}</span>`
   }
 
   function avatarHTML(name, color, cls = '') {
@@ -146,11 +144,17 @@
 
   let ITEMS = []
 
-  /** 合并内嵌（精选）数据与 host 实时同步数据：实时数据补充新条目，冲突时内嵌优先（保留 curated 字段）。 */
+  /** 合并内嵌（精选）数据与 host 实时同步数据：实时数据补充新条目，冲突时内嵌优先（保留 curated 字段）；
+   *  stats 逐字段合并，保证实时条目的 GitHub 星标不被内嵌旧数据覆盖。 */
   function mergeItems(embedded, live) {
     const byId = new Map()
     for (const it of (live || [])) if (it && it.id) byId.set(it.id, it)
-    for (const it of (embedded || [])) if (it && it.id) byId.set(it.id, it)
+    for (const it of (embedded || [])) if (it && it.id) {
+      const existing = byId.get(it.id)
+      byId.set(it.id, existing
+        ? { ...existing, ...it, stats: { ...(existing.stats || {}), ...(it.stats || {}) } }
+        : it)
+    }
     return [...byId.values()]
   }
 
@@ -262,6 +266,7 @@
   /**
    * 「最热门」综合权重算法：
    *   score = 订阅数 × 1.0
+   *         + GitHub 星标 × 2.0
    *         + 浏览量 × 0.02
    *         + 评分 × 180
    *         + 评分人数 × 0.05
@@ -269,7 +274,7 @@
    * 权重可调，位于本函数顶部，便于后续按真实数据校准。
    */
   function popularityScore(item) {
-    const W = { subscriber: 1.0, view: 0.02, rating: 180, ratingCount: 0.05 }
+    const W = { subscriber: 1.0, stars: 2.0, view: 0.02, rating: 180, ratingCount: 0.05 }
     const s = item.stats || {}
     const age = Date.now() - Number(item.update_time)
     let freshness = 0
@@ -277,6 +282,7 @@
     else if (age <= 30 * DAY) freshness = 80
     else if (age <= 90 * DAY) freshness = 20
     return (s.subscribers || 0) * W.subscriber
+      + (s.stars || 0) * W.stars
       + (s.views || 0) * W.view
       + (s.rating || 0) * W.rating
       + (s.rating_count || 0) * W.ratingCount
@@ -294,9 +300,9 @@
         return arr.sort((a, b) => Number(b.update_time) - Number(a.update_time))
       case 'rating':
         return arr.sort((a, b) => {
-          const d = (b.stats?.rating ?? 0) - (a.stats?.rating ?? 0)
+          const d = (b.stats?.stars ?? 0) - (a.stats?.stars ?? 0)
           if (d !== 0) return d
-          return (b.stats?.rating_count ?? 0) - (a.stats?.rating_count ?? 0)
+          return (b.stats?.subscribers ?? 0) - (a.stats?.subscribers ?? 0)
         })
       default:
         return arr.sort((a, b) => popularityScore(b) - popularityScore(a))
@@ -791,9 +797,8 @@
         <h3 class="card-title">${esc(item.title)}</h3>
         <div class="card-author">${avatarHTML(item.author, hueOf(item.author))}${esc(item.author)}</div>
         <div class="card-rating">
-          ${starsHTML(s.rating)}
-          <span class="rating-num">${Number(s.rating).toFixed(1)}</span>
-          <span class="rating-count">(${fmtNum(s.rating_count || 0)})</span>
+          ${githubStarsHTML(s.stars)}
+          <span class="rating-count" title="订阅数">${fmtNum(s.subscribers)} 订阅</span>
         </div>
         <p class="card-desc">${esc(item.description || '')}</p>
         <div class="card-footer">
@@ -857,7 +862,7 @@
           </div>
           <div class="detail-stats">
             <div class="stat-chip"><b>${fmtNum(s.subscribers)}</b><span>订阅</span></div>
-            <div class="stat-chip rating"><b>${Number(s.rating).toFixed(1)}</b><span>评分（${fmtNum(s.rating_count || 0)} 人）</span></div>
+            <div class="stat-chip rating"><b>${fmtNum(s.stars || 0)}</b><span>GitHub 星标</span></div>
             <div class="stat-chip"><b>${fmtNum(s.views)}</b><span>浏览</span></div>
           </div>
           <div class="detail-actions">
@@ -919,8 +924,7 @@
             <h4>统计信息</h4>
             <div class="side-row"><span class="k">订阅数</span><span class="v green">${fmtNum(s.subscribers)}</span></div>
             ${ver ? `<div class="side-row"><span class="k">版本</span><span class="v">v${esc(ver)}</span></div>` : ''}
-            <div class="side-row"><span class="k">评分</span><span class="v gold">${Number(s.rating).toFixed(1)} / 5</span></div>
-            <div class="side-row"><span class="k">评分人数</span><span class="v">${fmtNum(s.rating_count || 0)}</span></div>
+            <div class="side-row"><span class="k">GitHub 星标</span><span class="v gold">${fmtNum(s.stars || 0)}</span></div>
             <div class="side-row"><span class="k">浏览量</span><span class="v">${fmtNum(s.views)}</span></div>
             <div class="side-row"><span class="k">最后更新</span><span class="v">${fmtDate(item.update_time)}</span></div>
             <div class="side-row"><span class="k">兼容 DSH</span><span class="v">${esc((item.compat && item.compat.dsh) || '≥ 0.1.0-rc.5')}</span></div>
