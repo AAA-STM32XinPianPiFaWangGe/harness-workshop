@@ -1165,6 +1165,16 @@
     document.addEventListener('click', (e) => {
       if (!dropdown.contains(e.target)) open(false)
     })
+    // Tab 切换：直接处理点击，不依赖 srcdoc iframe 内 <a href="#..."> 的 hash 导航
+    // （about:srcdoc 中锚点 hash 跳转/外壳点击拦截可能导致 hashchange 不触发，点了没反应）
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault()
+        state.tab = tab.dataset.tab === 'subscribed' ? 'subscribed' : 'browse'
+        try { location.hash = state.tab === 'subscribed' ? '#/subscribed' : '#/browse' } catch { /* srcdoc 限制，忽略 */ }
+        showBrowse()
+      })
+    })
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return
       open(false)
