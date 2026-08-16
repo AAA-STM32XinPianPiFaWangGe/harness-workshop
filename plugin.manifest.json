@@ -1,0 +1,61 @@
+{
+  "id": "harness-workshop",
+  "title": "Harness 创意工坊",
+  "author": "Harness 官方",
+  "stats": {
+    "subscribers": 48213,
+    "rating": 4.9,
+    "rating_count": 3271,
+    "views": 528940
+  },
+  "update_time": 1786752000000,
+  "tags": ["UI美化", "效率工具"],
+  "thumbnail": "thumbs/harness-workshop.svg",
+  "version": "1.2.0",
+  "source": {
+    "type": "github",
+    "url": "https://github.com/harness-ecosystem/harness-workshop"
+  },
+  "description": "Harness 创意工坊核心插件：复刻 Steam 创意工坊的浏览、筛选、订阅与分发体验，用于管理和分发 Harness 的扩展功能。支持综合热度排序、多级分类树、标签过滤、订阅管理（本地持久化）与插件详情/更新日志/评论区。1.2.0 起「订阅 → 自动安装」支持真实写入 DSH profile（下载/校验 → 注册依赖与 patch 行 → pnpm install），失败自动回退演示模拟。",
+  "changelog": [
+    {
+      "version": "1.2.0",
+      "date": 1786924800000,
+      "notes": [
+        "「订阅 → 自动安装」接入 DSH 宿主真实安装链路：host 半边新增 /api/harness-workshop/{install,uninstall,status} 路由",
+        "安装流程：解析分发源（local 目录 / GitHub 仓库 tarball / https 安装包）→ sha256 校验 → 校验 dsh.client / dsh.bundle 清单 → 写入 profile package.json 依赖与 cordis.patch.yml 行 → pnpm install",
+        "安装完成后由 DSH 的 patch 热重组合 + client-modules 增量扫描接管，浏览器刷新页面即生效；卸载同步移除依赖与 patch 行",
+        "浏览器半边新增 iframe → host 消息桥（hw:install / hw:uninstall，requestId 关联）",
+        "安全边界：条目 id 白名单、仅 https 下载、50 MiB 上限、tar 路径越界防护；仅 loopback 可访问"
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": 1786752000000,
+      "notes": [
+        "订阅后自动安装（demo 模拟：下载/校验/写入进度 + 已安装状态，持久化 installed_list）",
+        "详情页新增「GitHub 源码」入口（source.url，新标签页打开）与版本号展示",
+        "排序下拉支持完整键盘操作（↑/↓ 移动、Home/End、Enter/Space 选中、Esc 关闭）",
+        "新增焦点管理：进入详情聚焦返回按钮，返回恢复卡片/筛选项/搜索框焦点，Esc 一键返回",
+        "排序与分类选择持久化（localStorage harness_workshop_prefs）",
+        "统计条口径统一：物品总数/最近更新/总浏览量跟随当前视图上下文",
+        "修复订阅按钮回车误触详情导航、详情页内订阅后按钮不刷新等问题",
+        "构建链路完善：npm run build 一并产出 DSH 客户端 bundle，测试改数据驱动"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": 1757808000000,
+      "notes": [
+        "首发版本：完整复刻 Steam 创意工坊视觉与交互",
+        "内置 20+ 条 Harness 扩展模拟数据用于初始化展示",
+        "支持最热门 / 最多订阅 / 最近更新 / 最高评分 / 最多浏览五种排序",
+        "订阅状态通过 localStorage 持久化，切换标签即时刷新"
+      ]
+    }
+  ],
+  "compat": {
+    "dsh": ">=0.1.0-rc.5",
+    "platform": ["web", "win32", "darwin", "linux"]
+  }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harness 创意工坊</title>
+  <meta name="description" content="Harness 创意工坊 — 管理和分发 Harness 扩展功能的核心插件，复刻 Steam 创意工坊的浏览、筛选、订阅与分发体验。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231b2838'/%3E%3Cpath d='M14 7h4l-1 5 3 2-2 3 1 5-4-2-4 2 1-5-2-3 3-2z' fill='%2366c0f4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/workshop.css">
+</head>
+<body>
+<div id="app" class="workshop">
+
+  <!-- ============ 顶部导航栏 ============ -->
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <a class="logo" href="#/browse" title="Harness 创意工坊">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <path d="M12.5 5h7l-1.6 7.4 4.6 2.9-2.9 4.1 1.4 7.6-5.7-2.7-5.7 2.7 1.4-7.6-2.9-4.1 4.6-2.9z" fill="#fff"/>
+            <circle cx="16" cy="16" r="3" fill="#66c0f4"/>
+          </svg>
+        </span>
+        <span class="logo-text">HARNESS&nbsp;<em>创意工坊</em></span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- 全局搜索框 -->
+        <div class="search-box" id="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <input id="search-input" type="text" autocomplete="off" spellcheck="false"
+                 placeholder="搜索插件、作者或标签…" aria-label="搜索插件">
+          <button class="search-clear" id="search-clear" title="清除搜索" hidden>&#10005;</button>
+        </div>
+
+        <!-- 排序下拉菜单 -->
+        <div class="sort-dropdown" id="sort-dropdown">
+          <button class="sort-trigger" id="sort-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-menu">
+            <span id="sort-label">最热门</span>
+            <svg class="sort-caret" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true">
+              <path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul class="sort-menu" id="sort-menu" role="listbox" hidden>
+            <li role="option" data-sort="popular" aria-selected="true"><span>最热门</span><small>综合热度权重</small><i>✓</i></li>
+            <li role="option" data-sort="subscribers" aria-selected="false"><span>最多订阅</span><small>按订阅数降序</small><i>✓</i></li>
+            <li role="option" data-sort="updated" aria-selected="false"><span>最近更新</span><small>按更新时间降序</small><i>✓</i></li>
+            <li role="option" data-sort="rating" aria-selected="false"><span>最高评分</span><small>按评分降序</small><i>✓</i></li>
+            <li role="option" data-sort="views" aria-selected="false"><span>最多浏览</span><small>按浏览量降序</small><i>✓</i></li>
+          </ul>
+        </div>
+
+        <!-- Tab 切换 -->
+        <nav class="tabs" aria-label="创意工坊页面">
+          <a class="tab" data-tab="browse" href="#/browse">浏览</a>
+          <a class="tab" data-tab="subscribed" href="#/subscribed">您的订阅 <span class="tab-badge" id="sub-badge">0</span></a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 统计条（Steam 创意工坊风格） -->
+    <div class="stats-strip">
+      <span>物品总数 <b id="stat-total">0</b></span>
+      <span class="sep">·</span>
+      <span>已订阅 <b id="stat-subscribed">0</b></span>
+      <span class="sep">·</span>
+      <span>最近更新 <b id="stat-recent">0</b></span>
+      <span class="sep">·</span>
+      <span>总浏览量 <b id="stat-views">0</b></span>
+      <span class="sep">·</span>
+      <span>数据同步 <b id="stat-sync">内嵌</b></span>
+    </div>
+  </header>
+
+  <!-- ============ 主体：侧边栏 + 网格 ============ -->
+  <main class="workshop-body" id="view-browse">
+    <!-- 左侧侧边栏（过滤器） -->
+    <aside class="sidebar">
+      <section class="sidebar-section">
+        <h3 class="sidebar-title">浏览分类</h3>
+        <ul class="cat-tree" id="cat-tree" role="tree"></ul>
+      </section>
+
+      <section class="sidebar-section">
+        <h3 class="sidebar-title">按标签筛选</h3>
+        <ul class="tag-filter" id="tag-filter"></ul>
+      </section>
+
+      <button class="reset-filters" id="reset-filters" type="button">重置筛选条件</button>
+    </aside>
+
+    <!-- 主内容区（网格视图） -->
+    <section class="content">
+      <div class="content-head">
+        <h2 class="content-title" id="content-title">全部</h2>
+        <span class="result-count" id="result-count"></span>
+      </div>
+      <div class="item-grid" id="item-grid"></div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+          <circle cx="60" cy="60" r="54" fill="rgba(102,192,244,0.06)"/>
+          <circle cx="60" cy="60" r="38" fill="rgba(102,192,244,0.08)"/>
+          <rect x="30" y="34" width="60" height="34" rx="4" fill="#2a475e"/>
+          <rect x="30" y="34" width="44" height="34" rx="4" fill="#417a9b"/>
+          <circle cx="58" cy="88" r="8" fill="none" stroke="#66c0f4" stroke-width="3"/>
+          <line x1="63" y1="92" x2="74" y2="103" stroke="#66c0f4" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h3 id="empty-title">没有找到匹配的插件</h3>
+        <p id="empty-desc">试试调整搜索关键词、分类或标签筛选条件。</p>
+        <button class="btn-reset" id="empty-reset" type="button">重置筛选条件</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 详情页 ============ -->
+  <section class="detail-view" id="view-detail" hidden></section>
+
+  <!-- 订阅提示 -->
+  <div class="toast" id="toast" role="status" hidden></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/workshop.js"></script>
+</body>
+</html>

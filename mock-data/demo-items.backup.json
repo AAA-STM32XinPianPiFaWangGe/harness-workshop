@@ -1,0 +1,1071 @@
+{
+  "note": "原演示用虚构条目备份（GitHub 地址为示意）。如需恢复，把 items 合并回 workshop_items.json 并执行 npm run build。",
+  "generated_at": 1786752000000,
+  "items": [
+    {
+      "id": "session-summarizer",
+      "title": "会话自动摘要",
+      "author": "Harness 官方",
+      "stats": {
+        "subscribers": 20145,
+        "rating": 4.9,
+        "rating_count": 1532,
+        "views": 210980
+      },
+      "update_time": 1786579200000,
+      "tags": [
+        "效率工具",
+        "自动化"
+      ],
+      "thumbnail": "thumbs/session-summarizer.svg",
+      "description": "在每次会话结束后自动生成**结构化摘要**，包含关键决策、遗留问题与下一步行动。\n\n支持自定义摘要模板、自动归档到本地笔记，并可在新会话中一键恢复上下文。\n\n**特性**：\n- 会话结束后自动触发，无需手动操作\n- 摘要模板可定制（决策 / 行动项 / 风险）\n- 与上下文清理插件无缝联动",
+      "changelog": [
+        {
+          "version": "1.4.2",
+          "date": 1786579200000,
+          "notes": [
+            "新增「决策树」摘要模板",
+            "修复长会话摘要被截断的问题",
+            "摘要导出支持 Markdown 与 PDF"
+          ]
+        },
+        {
+          "version": "1.4.0",
+          "date": 1784684800000,
+          "notes": [
+            "支持按项目维度归档摘要",
+            "新增摘要搜索入口"
+          ]
+        },
+        {
+          "version": "1.3.1",
+          "date": 1782345600000,
+          "notes": [
+            "性能优化：大型会话摘要耗时降低 40%"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "夜航星",
+          "avatar": "#66c0f4",
+          "time": 1786502400000,
+          "content": "配合上下文清理插件用简直是绝配，每天下班前自动归档，第二天上班直接恢复。",
+          "likes": 128
+        },
+        {
+          "author": "Komorebi",
+          "avatar": "#a4d007",
+          "time": 1786320000000,
+          "content": "希望支持导出到 Notion / Obsidian，现在只能存本地笔记。",
+          "likes": 45
+        },
+        {
+          "author": "老白",
+          "avatar": "#f49f05",
+          "time": 1785974400000,
+          "content": "决策树模板太好用了，评审会议记录神器。",
+          "likes": 32
+        }
+      ],
+      "version": "1.4.2",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/session-summarizer",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "dark-theme-pro",
+      "title": "暗夜主题 Pro",
+      "author": "Mono Studio",
+      "stats": {
+        "subscribers": 15234,
+        "rating": 4.8,
+        "rating_count": 892,
+        "views": 120340
+      },
+      "update_time": 1786492800000,
+      "tags": [
+        "UI美化",
+        "主题"
+      ],
+      "thumbnail": "thumbs/dark-theme-pro.svg",
+      "description": "为 Harness Web 界面量身定制的深色主题，基于 Steam 经典深蓝配色（#1b2838 / #66c0f4）重新设计。\n\n**亮点**：\n- 全量 200+ 组件的深色变量覆盖\n- 支持「深蓝 / 纯黑 / 护眼暖黑」三种子风格\n- 随系统自动切换明暗模式",
+      "changelog": [
+        {
+          "version": "2.1.0",
+          "date": 1786492800000,
+          "notes": [
+            "新增护眼暖黑子风格",
+            "修复表格斑马纹对比度"
+          ]
+        },
+        {
+          "version": "2.0.0",
+          "date": 1783900800000,
+          "notes": [
+            "基于设计令牌重构全部变量",
+            "新增明暗自动切换"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "Starry",
+          "avatar": "#ffc82e",
+          "time": 1786419200000,
+          "content": "深蓝配色太对味了，一眼 Steam。",
+          "likes": 210
+        },
+        {
+          "author": "北极光",
+          "avatar": "#66c0f4",
+          "time": 1786060800000,
+          "content": "2.1 的暖黑风格晚上写代码很舒服。",
+          "likes": 67
+        }
+      ],
+      "version": "2.1.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/dark-theme-pro",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "code-review-agent",
+      "title": "代码评审 Agent",
+      "author": "DevForge",
+      "stats": {
+        "subscribers": 18234,
+        "rating": 4.9,
+        "rating_count": 1243,
+        "views": 187650
+      },
+      "update_time": 1786406400000,
+      "tags": [
+        "Agent预设",
+        "效率工具"
+      ],
+      "thumbnail": "thumbs/code-review-agent.svg",
+      "description": "内置评审专家人格的 Agent 预设：提交 diff 即可获得**逐文件评审意见**、风险等级评估与重构建议。\n\n支持 Git 工作区直连，一键评审未提交改动。\n\n**评审维度**：正确性、安全性、可读性、性能、测试覆盖。",
+      "changelog": [
+        {
+          "version": "3.0.1",
+          "date": 1786406400000,
+          "notes": [
+            "新增安全漏洞专检模式",
+            "评审报告支持导出 HTML"
+          ]
+        },
+        {
+          "version": "3.0.0",
+          "date": 1783814400000,
+          "notes": [
+            "接入 Git 工作区直连",
+            "支持增量评审（仅评审 diff）"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "CoderX",
+          "avatar": "#66c0f4",
+          "time": 1786320000000,
+          "content": "评审质量超出预期，能发现 SonarQube 漏掉的 NPE。",
+          "likes": 156
+        },
+        {
+          "author": "喵帕斯",
+          "avatar": "#a4d007",
+          "time": 1786060800000,
+          "content": "希望支持更多语言的风格规范，比如 Go 的 lint 规则。",
+          "likes": 28
+        }
+      ],
+      "version": "3.0.1",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/code-review-agent",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "research-pipeline",
+      "title": "批量研究流水线",
+      "author": "Harness 官方",
+      "stats": {
+        "subscribers": 9876,
+        "rating": 4.8,
+        "rating_count": 765,
+        "views": 89010
+      },
+      "update_time": 1786233600000,
+      "tags": [
+        "效率工具",
+        "工作流"
+      ],
+      "thumbnail": "thumbs/research-pipeline.svg",
+      "description": "把「检索 → 阅读 → 提炼 → 汇总」的研究过程做成可视化流水线，可并行处理数十个主题。\n\n每个阶段支持人工干预与自动执行切换，结果以结构化卡片呈现并支持一键导出。",
+      "changelog": [
+        {
+          "version": "2.2.0",
+          "date": 1786233600000,
+          "notes": [
+            "新增并行分支可视化",
+            "失败阶段支持断点重跑"
+          ]
+        },
+        {
+          "version": "2.1.0",
+          "date": 1783814400000,
+          "notes": [
+            "检索来源支持自定义 API"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "研究员小张",
+          "avatar": "#f49f05",
+          "time": 1786147200000,
+          "content": "写综述论文的效率神器，30 个主题并行跑完只要 20 分钟。",
+          "likes": 89
+        },
+        {
+          "author": "Quark",
+          "avatar": "#66c0f4",
+          "time": 1785801600000,
+          "content": "断点重跑这个功能太贴心了。",
+          "likes": 41
+        }
+      ],
+      "version": "2.2.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/research-pipeline",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "context-cleaner",
+      "title": "一键清理上下文",
+      "author": "CleanTools",
+      "stats": {
+        "subscribers": 15432,
+        "rating": 4.7,
+        "rating_count": 987,
+        "views": 156700
+      },
+      "update_time": 1786320000000,
+      "tags": [
+        "效率工具",
+        "自动化"
+      ],
+      "thumbnail": "thumbs/context-cleaner.svg",
+      "description": "深度清理会话上下文中的冗余内容：工具结果、重复引用、过时附件，可自定义保留策略。\n\n**场景**：长会话卡顿、Token 告警、模型『失忆』。\n\n清理前后 Token 用量对比一目了然。",
+      "changelog": [
+        {
+          "version": "1.8.0",
+          "date": 1786320000000,
+          "notes": [
+            "新增清理前后 Token 对比报告",
+            "支持白名单保留指定会话片段"
+          ]
+        },
+        {
+          "version": "1.7.2",
+          "date": 1784160000000,
+          "notes": [
+            "修复附件清理误删问题"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "省钱小能手",
+          "avatar": "#a4d007",
+          "time": 1786233600000,
+          "content": "清理一次省 30% Token，月账单肉眼可见地降了。",
+          "likes": 143
+        },
+        {
+          "author": "摸鱼大师",
+          "avatar": "#ffc82e",
+          "time": 1785974400000,
+          "content": "白名单功能救了我那些必须保留的上下文。",
+          "likes": 36
+        }
+      ],
+      "version": "1.8.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/context-cleaner",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "neon-synthwave",
+      "title": "赛博霓虹主题",
+      "author": "ChromeHearts",
+      "stats": {
+        "subscribers": 12087,
+        "rating": 4.7,
+        "rating_count": 1024,
+        "views": 98760
+      },
+      "update_time": 1786060800000,
+      "tags": [
+        "UI美化",
+        "主题"
+      ],
+      "thumbnail": "thumbs/neon-synthwave.svg",
+      "description": "霓虹紫 + 青色发光的赛博朋克主题，包含动态渐变标题、发光按钮与 CRT 扫描线特效。\n\n注意：发光特效较多，低端设备建议关闭动态效果。",
+      "changelog": [
+        {
+          "version": "1.5.0",
+          "date": 1786060800000,
+          "notes": [
+            "新增动态扫描线开关",
+            "性能优化：发光图层合并"
+          ]
+        },
+        {
+          "version": "1.4.0",
+          "date": 1783209600000,
+          "notes": [
+            "新增霓虹绿配色方案"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "NeonCat",
+          "avatar": "#e050f0",
+          "time": 1785974400000,
+          "content": "RGB 拉满，我的眼睛在发光。",
+          "likes": 95
+        },
+        {
+          "author": "理性派",
+          "avatar": "#66c0f4",
+          "time": 1785715200000,
+          "content": "特效好看但有点费电，希望有节能模式。",
+          "likes": 22
+        }
+      ],
+      "version": "1.5.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/neon-synthwave",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "paper-polish",
+      "title": "论文润色 Agent",
+      "author": "ScholarAI",
+      "stats": {
+        "subscribers": 10987,
+        "rating": 4.6,
+        "rating_count": 654,
+        "views": 76540
+      },
+      "update_time": 1785974400000,
+      "tags": [
+        "Agent预设"
+      ],
+      "thumbnail": "thumbs/paper-polish.svg",
+      "description": "面向学术写作的润色 Agent：中英双语学术润色、术语一致性检查、参考文献格式校对。\n\n支持 LaTeX 源码直贴直出，保留公式与引用结构。",
+      "changelog": [
+        {
+          "version": "2.3.0",
+          "date": 1785974400000,
+          "notes": [
+            "新增术语表管理",
+            "支持 IEEE / APA / GB/T 三种格式校对"
+          ]
+        },
+        {
+          "version": "2.2.0",
+          "date": 1783641600000,
+          "notes": [
+            "LaTeX 支持增强"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "学术苦行僧",
+          "avatar": "#f49f05",
+          "time": 1785801600000,
+          "content": "润色后的英文投稿一次过外审，谢谢作者。",
+          "likes": 178
+        },
+        {
+          "author": "PaperDog",
+          "avatar": "#a4d007",
+          "time": 1785542400000,
+          "content": "术语一致性检查对多作者论文特别有用。",
+          "likes": 54
+        }
+      ],
+      "version": "2.3.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/paper-polish",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "split-workspace",
+      "title": "分栏工作台",
+      "author": "LayoutLab",
+      "stats": {
+        "subscribers": 7634,
+        "rating": 4.6,
+        "rating_count": 342,
+        "views": 45678
+      },
+      "update_time": 1785715200000,
+      "tags": [
+        "UI美化",
+        "布局增强"
+      ],
+      "thumbnail": "thumbs/split-workspace.svg",
+      "description": "把工作区拆分为可拖拽调宽的多栏布局：左侧目录、中间对话、右侧参考材料同屏协作。\n\n布局方案可保存为预设，一键切换。",
+      "changelog": [
+        {
+          "version": "1.2.0",
+          "date": 1785715200000,
+          "notes": [
+            "新增布局预设管理",
+            "拖拽调宽支持键盘微调"
+          ]
+        },
+        {
+          "version": "1.1.0",
+          "date": 1783728000000,
+          "notes": [
+            "首次发布"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "双屏党",
+          "avatar": "#66c0f4",
+          "time": 1785542400000,
+          "content": "一边看论文一边写代码一边聊天，终极形态。",
+          "likes": 76
+        },
+        {
+          "author": "简单就好",
+          "avatar": "#8f98a0",
+          "time": 1785283200000,
+          "content": "希望栏宽能按百分比输入精确值。",
+          "likes": 11
+        }
+      ],
+      "version": "1.2.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/split-workspace",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "git-panel",
+      "title": "Git 面板集成",
+      "author": "DevForge",
+      "stats": {
+        "subscribers": 7654,
+        "rating": 4.7,
+        "rating_count": 543,
+        "views": 67890
+      },
+      "update_time": 1785456000000,
+      "tags": [
+        "工具集成"
+      ],
+      "thumbnail": "thumbs/git-panel.svg",
+      "description": "在工作台内直接查看仓库状态、暂存改动、提交与推送，无需切换终端。\n\n支持分支可视化图谱与冲突文件快速打开。",
+      "changelog": [
+        {
+          "version": "1.6.0",
+          "date": 1785456000000,
+          "notes": [
+            "新增分支图谱视图",
+            "支持 SSH 代理配置"
+          ]
+        },
+        {
+          "version": "1.5.0",
+          "date": 1783296000000,
+          "notes": [
+            "性能优化：大仓库 diff 渲染提速"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "DevOps 打工人",
+          "avatar": "#a4d007",
+          "time": 1785283200000,
+          "content": "再也不用切终端了，分支图谱还挺好看。",
+          "likes": 63
+        },
+        {
+          "author": "GitNewbie",
+          "avatar": "#66c0f4",
+          "time": 1785024000000,
+          "content": "建议加一个『回滚到此处』的右键菜单。",
+          "likes": 19
+        }
+      ],
+      "version": "1.6.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/git-panel",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "weekly-template",
+      "title": "周报模板集",
+      "author": "白领助手",
+      "stats": {
+        "subscribers": 5678,
+        "rating": 4.4,
+        "rating_count": 298,
+        "views": 32100
+      },
+      "update_time": 1785888000000,
+      "tags": [
+        "模板",
+        "效率工具"
+      ],
+      "thumbnail": "thumbs/weekly-template.svg",
+      "description": "12 套开箱即用的周报 / 月报 / 复盘模板，支持自动汇总本周完成事项并生成数据图表。\n\n模板字段完全可编辑，适配技术、运营、管理等多种岗位。",
+      "changelog": [
+        {
+          "version": "1.3.0",
+          "date": 1785888000000,
+          "notes": [
+            "新增 3 套管理岗模板",
+            "支持导出企业微信格式"
+          ]
+        },
+        {
+          "version": "1.2.0",
+          "date": 1784073600000,
+          "notes": [
+            "新增图表自动生成"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "周报困难户",
+          "avatar": "#ffc82e",
+          "time": 1785801600000,
+          "content": "以前写周报两小时，现在十分钟。",
+          "likes": 87
+        },
+        {
+          "author": "运营喵",
+          "avatar": "#e050f0",
+          "time": 1785456000000,
+          "content": "运营模板很接地气，好评。",
+          "likes": 24
+        }
+      ],
+      "version": "1.3.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/weekly-template",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "minimal-light",
+      "title": "极简光主题",
+      "author": "Mono Studio",
+      "stats": {
+        "subscribers": 8932,
+        "rating": 4.5,
+        "rating_count": 431,
+        "views": 65420
+      },
+      "update_time": 1785024000000,
+      "tags": [
+        "UI美化",
+        "主题"
+      ],
+      "thumbnail": "thumbs/minimal-light.svg",
+      "description": "清爽的浅色主题，白底 + 柔和的蓝色强调色，专注阅读与写作场景。\n\n保留深色模式的全部功能，仅调整色彩变量。",
+      "changelog": [
+        {
+          "version": "1.1.0",
+          "date": 1785024000000,
+          "notes": [
+            "新增打印友好样式",
+            "微调表格对比度"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "白昼",
+          "avatar": "#66c0f4",
+          "time": 1784940800000,
+          "content": "白天用浅色真的护眼，和深色主题无缝切换。",
+          "likes": 58
+        }
+      ],
+      "version": "1.1.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/minimal-light",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "report-builder",
+      "title": "图表报告生成器",
+      "author": "DataCraft",
+      "stats": {
+        "subscribers": 6543,
+        "rating": 4.4,
+        "rating_count": 289,
+        "views": 43210
+      },
+      "update_time": 1785196800000,
+      "tags": [
+        "效率工具",
+        "工作流"
+      ],
+      "thumbnail": "thumbs/report-builder.svg",
+      "description": "把会话中的数据一键转成**可视化报告**：柱状图、折线图、热力图与仪表盘。\n\n支持数据表格粘贴输入、模板化排版与 PDF/PNG 导出。",
+      "changelog": [
+        {
+          "version": "2.0.1",
+          "date": 1785196800000,
+          "notes": [
+            "修复导出 PNG 偶发空白"
+          ]
+        },
+        {
+          "version": "2.0.0",
+          "date": 1782864000000,
+          "notes": [
+            "新增仪表盘布局",
+            "支持 8 种图表类型"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "数据搬运工",
+          "avatar": "#f49f05",
+          "time": 1785024000000,
+          "content": "给老板的周报全靠它，图表颜值在线。",
+          "likes": 71
+        },
+        {
+          "author": "excel 难民",
+          "avatar": "#a4d007",
+          "time": 1784764800000,
+          "content": "不用再跟 Excel 死磕了，粘贴数据直接出图。",
+          "likes": 43
+        }
+      ],
+      "version": "2.0.1",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/report-builder",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "data-analyst",
+      "title": "数据分析 Agent",
+      "author": "DataCraft",
+      "stats": {
+        "subscribers": 8765,
+        "rating": 4.5,
+        "rating_count": 432,
+        "views": 56780
+      },
+      "update_time": 1784592000000,
+      "tags": [
+        "Agent预设"
+      ],
+      "thumbnail": "thumbs/data-analyst.svg",
+      "description": "专业数据分析 Agent：自动完成数据清洗、统计检验、相关性分析与洞察报告撰写。\n\n内置 Python 执行环境，可直接跑 pandas / scipy 代码。",
+      "changelog": [
+        {
+          "version": "2.4.0",
+          "date": 1784592000000,
+          "notes": [
+            "新增时间序列预测模块",
+            "报告支持引用图表"
+          ]
+        },
+        {
+          "version": "2.3.0",
+          "date": 1782518400000,
+          "notes": [
+            "内置环境升级 pandas 2.x"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "统计砖家",
+          "avatar": "#66c0f4",
+          "time": 1784505600000,
+          "content": "统计检验部分写得很严谨，适合当分析助手。",
+          "likes": 52
+        }
+      ],
+      "version": "2.4.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/data-analyst",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "terminal-pro",
+      "title": "终端美化增强",
+      "author": "ChromeHearts",
+      "stats": {
+        "subscribers": 3210,
+        "rating": 4.2,
+        "rating_count": 134,
+        "views": 16540
+      },
+      "update_time": 1783728000000,
+      "tags": [
+        "工具集成",
+        "UI美化"
+      ],
+      "thumbnail": "thumbs/terminal-pro.svg",
+      "description": "为工作台终端区提供语法高亮、命令提示、输出折叠与错误日志定位。\n\n与 Git 面板联动，错误输出可直接跳转到对应文件。",
+      "changelog": [
+        {
+          "version": "1.2.0",
+          "date": 1783728000000,
+          "notes": [
+            "新增错误日志跳转文件",
+            "语法高亮支持 40+ 语言"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "命令行爱好者",
+          "avatar": "#a4d007",
+          "time": 1783641600000,
+          "content": "折叠输出太爽了，npm 安装日志再也不刷屏。",
+          "likes": 34
+        }
+      ],
+      "version": "1.2.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/terminal-pro",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "cron-panel",
+      "title": "定时任务面板",
+      "author": "CleanTools",
+      "stats": {
+        "subscribers": 5432,
+        "rating": 4.3,
+        "rating_count": 210,
+        "views": 34560
+      },
+      "update_time": 1784160000000,
+      "tags": [
+        "效率工具",
+        "自动化"
+      ],
+      "thumbnail": "thumbs/cron-panel.svg",
+      "description": "可视化管理定时任务：按 cron 表达式编排自动运行的工作流，运行日志与失败重试一目了然。\n\n支持任务依赖编排与运行结果通知。",
+      "changelog": [
+        {
+          "version": "1.4.0",
+          "date": 1784160000000,
+          "notes": [
+            "新增任务依赖编排",
+            "运行结果支持 Webhook 通知"
+          ]
+        },
+        {
+          "version": "1.3.0",
+          "date": 1782345600000,
+          "notes": [
+            "新增 cron 表达式可视化编辑"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "自动化狂魔",
+          "avatar": "#66c0f4",
+          "time": 1784073600000,
+          "content": "早上 9 点自动跑日报，起床就能看，舒服。",
+          "likes": 47
+        }
+      ],
+      "version": "1.4.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/cron-panel",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "steamwave-ui",
+      "title": "蒸汽波主题",
+      "author": "ChromeHearts",
+      "stats": {
+        "subscribers": 4521,
+        "rating": 4.2,
+        "rating_count": 187,
+        "views": 23450
+      },
+      "update_time": 1782864000000,
+      "tags": [
+        "UI美化",
+        "主题"
+      ],
+      "thumbnail": "thumbs/steamwave-ui.svg",
+      "description": "粉紫渐变 + 石膏像元素 + 复古网格的蒸汽波风格主题，适合追求个性的工作台。\n\n包含专属启动动画与加载屏。",
+      "changelog": [
+        {
+          "version": "1.1.0",
+          "date": 1782864000000,
+          "notes": [
+            "新增专属加载动画"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "复古玩家",
+          "avatar": "#e050f0",
+          "time": 1782777600000,
+          "content": "启动动画好看到舍不得跳过。",
+          "likes": 29
+        }
+      ],
+      "version": "1.1.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/steamwave-ui",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "jira-sync",
+      "title": "Jira 同步桥",
+      "author": "白领助手",
+      "stats": {
+        "subscribers": 2345,
+        "rating": 3.9,
+        "rating_count": 87,
+        "views": 10980
+      },
+      "update_time": 1782000000000,
+      "tags": [
+        "工具集成"
+      ],
+      "thumbnail": "thumbs/jira-sync.svg",
+      "description": "把 Jira 任务与工作台双向同步：会话中创建的待办可一键推到 Jira，Jira 更新实时回流。\n\n需要管理员提供 API Token。",
+      "changelog": [
+        {
+          "version": "0.9.0",
+          "date": 1782000000000,
+          "notes": [
+            "Beta：双向同步基础版",
+            "已知问题：附件同步偶发超时"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "项目经理",
+          "avatar": "#f49f05",
+          "time": 1781913600000,
+          "content": "Beta 版能用，附件同步确实偶尔超时，期待正式版。",
+          "likes": 15
+        },
+        {
+          "author": "Tester01",
+          "avatar": "#8f98a0",
+          "time": 1781568000000,
+          "content": "希望支持看板泳道视图。",
+          "likes": 8
+        }
+      ],
+      "version": "0.9.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/jira-sync",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "floating-toolkit",
+      "title": "浮动工具窗",
+      "author": "LayoutLab",
+      "stats": {
+        "subscribers": 3210,
+        "rating": 4,
+        "rating_count": 96,
+        "views": 12300
+      },
+      "update_time": 1781568000000,
+      "tags": [
+        "UI美化",
+        "布局增强"
+      ],
+      "thumbnail": "thumbs/floating-toolkit.svg",
+      "description": "把常用工具（计算器、翻译、速查表）变成可拖拽的浮动小窗，置顶悬浮于工作区。\n\n支持多屏跨屏拖拽与透明度调节。",
+      "changelog": [
+        {
+          "version": "1.0.2",
+          "date": 1781568000000,
+          "notes": [
+            "修复高分屏缩放模糊"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "摸鱼大师",
+          "avatar": "#ffc82e",
+          "time": 1781481600000,
+          "content": "翻译小窗置顶，看外文文档不用切窗口了。",
+          "likes": 31
+        }
+      ],
+      "version": "1.0.2",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/floating-toolkit",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "translator-pro",
+      "title": "翻译校对 Agent",
+      "author": "ScholarAI",
+      "stats": {
+        "subscribers": 4321,
+        "rating": 4.1,
+        "rating_count": 154,
+        "views": 19870
+      },
+      "update_time": 1780704000000,
+      "tags": [
+        "Agent预设"
+      ],
+      "thumbnail": "thumbs/translator-pro.svg",
+      "description": "中英互译 + 术语一致性校对的双语 Agent，保留原文格式与标记，适合文档与界面文案翻译。\n\n内置 20+ 行业术语库，支持自定义导入。",
+      "changelog": [
+        {
+          "version": "1.2.0",
+          "date": 1780704000000,
+          "notes": [
+            "新增 UI 文案翻译模式"
+          ]
+        },
+        {
+          "version": "1.1.0",
+          "date": 1778688000000,
+          "notes": [
+            "术语库支持 CSV 导入"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "本地化从业者",
+          "avatar": "#66c0f4",
+          "time": 1780617600000,
+          "content": "UI 文案翻译模式对做软件出海太友好了。",
+          "likes": 26
+        }
+      ],
+      "version": "1.2.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/translator-pro",
+        "install": "demo"
+      }
+    },
+    {
+      "id": "prompt-handbook",
+      "title": "Prompt 工程手册",
+      "author": "Harness 官方",
+      "stats": {
+        "subscribers": 13542,
+        "rating": 4.8,
+        "rating_count": 876,
+        "views": 123450
+      },
+      "update_time": 1786147200000,
+      "tags": [
+        "教程"
+      ],
+      "thumbnail": "thumbs/prompt-handbook.svg",
+      "description": "面向 Harness 的 Prompt 工程实战手册：从基础语法到高级模式（思维链、角色扮演、Few-shot）。\n\n内置 40+ 可复用的高质量 Prompt 模板，附带效果对比案例。",
+      "changelog": [
+        {
+          "version": "3.2.0",
+          "date": 1786147200000,
+          "notes": [
+            "新增「多步推理」章节",
+            "补充 12 个新模板"
+          ]
+        },
+        {
+          "version": "3.1.0",
+          "date": 1784246400000,
+          "notes": [
+            "新增工具调用场景最佳实践"
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "Prompt 萌新",
+          "avatar": "#a4d007",
+          "time": 1786060800000,
+          "content": "跟着手册学了一周，输出质量肉眼可见提升。",
+          "likes": 112
+        },
+        {
+          "author": "老 Prompt 人",
+          "avatar": "#66c0f4",
+          "time": 1785801600000,
+          "content": "多步推理章节写得很有深度，值得反复读。",
+          "likes": 65
+        }
+      ],
+      "version": "3.2.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/harness-ecosystem/prompt-handbook",
+        "install": "demo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "topic": "dsh-plugin",
+  "note": "离线验证样本：模拟 GitHub topic:dsh-plugin 搜索结果（含仓库元数据 / plugin.manifest.json / Release 安装包三种数据源）。字段形状与 GitHub API 保持一致，用于 node scripts/fetch-github.mjs --fixture 离线验证管线。",
+  "repos": [
+    {
+      "name": "ctx-focus",
+      "full_name": "harness-ecosystem/ctx-focus",
+      "html_url": "https://github.com/harness-ecosystem/ctx-focus",
+      "description": "上下文聚焦工具：按项目维度裁剪会话上下文，一键导出结构化摘要。",
+      "default_branch": "main",
+      "pushed_at": "2026-08-02T08:30:00Z",
+      "updated_at": "2026-08-02T08:30:00Z",
+      "stargazers_count": 321,
+      "topics": ["dsh-plugin", "harness", "workflow", "automation"],
+      "owner": { "login": "harness-ecosystem" },
+      "_manifest": {
+        "id": "ctx-focus",
+        "title": "上下文聚焦",
+        "author": "Harness 官方",
+        "stats": { "subscribers": 320, "rating": 4.7, "rating_count": 58, "views": 12400 },
+        "update_time": 1783096200000,
+        "tags": ["效率工具", "工作流", "自动化"],
+        "description": "按项目维度裁剪会话上下文，一键导出结构化摘要。",
+        "version": "1.3.0",
+        "compat": { "dsh": ">=0.1.0-rc.5", "platform": ["web", "win32", "darwin", "linux"] }
+      },
+      "_release": {
+        "tag_name": "v1.3.0",
+        "published_at": "2026-08-02T08:00:00Z",
+        "body": "新增项目维度裁剪；修复长上下文导出截断问题。",
+        "asset": {
+          "name": "ctx-focus.js",
+          "browser_download_url": "https://github.com/harness-ecosystem/ctx-focus/releases/download/v1.3.0/ctx-focus.js"
+        }
+      }
+    },
+    {
+      "name": "session-pulse",
+      "full_name": "harness-ecosystem/session-pulse",
+      "html_url": "https://github.com/harness-ecosystem/session-pulse",
+      "description": "会话健康度仪表盘：token 用量、上下文占用率与超限预警。",
+      "default_branch": "main",
+      "pushed_at": "2026-07-28T02:10:00Z",
+      "updated_at": "2026-07-28T02:10:00Z",
+      "stargazers_count": 156,
+      "topics": ["dsh-plugin", "harness", "utility", "api"],
+      "owner": { "login": "harness-ecosystem" },
+      "_manifest": {
+        "id": "session-pulse",
+        "title": "会话脉搏",
+        "author": "Harness 官方",
+        "stats": { "subscribers": 150, "rating": 4.5, "rating_count": 21, "views": 6800 },
+        "update_time": 1783023000000,
+        "tags": ["效率工具", "工具集成"],
+        "description": "会话健康度仪表盘：token 用量、上下文占用率与超限预警。",
+        "version": "0.9.1",
+        "compat": { "dsh": ">=0.1.0-rc.5", "platform": ["web", "win32", "darwin", "linux"] }
+      },
+      "_release": null
+    },
+    {
+      "name": "dsh-plugin-cc",
+      "full_name": "cpj-dev/dsh-plugin-cc",
+      "html_url": "https://github.com/cpj-dev/dsh-plugin-cc",
+      "description": "Bridge Deepseek-harness into Claude Code for review, critique, delegation, and session import.",
+      "default_branch": "main",
+      "pushed_at": "2026-07-20T12:00:00Z",
+      "updated_at": "2026-07-20T12:00:00Z",
+      "stargazers_count": 89,
+      "topics": ["dsh-plugin", "claude-code", "bridge"],
+      "owner": { "login": "cpj-dev" },
+      "_manifest": null,
+      "_release": {
+        "tag_name": "v0.4.0",
+        "published_at": "2026-07-20T11:30:00Z",
+        "body": "支持会话导入与委托评审。",
+        "asset": {
+          "name": "dsh-plugin-cc.tgz",
+          "browser_download_url": "https://github.com/cpj-dev/dsh-plugin-cc/releases/download/v0.4.0/dsh-plugin-cc.tgz"
+        }
+      }
+    },
+    {
+      "name": "harness-tips",
+      "full_name": "harness-ecosystem/harness-tips",
+      "html_url": "https://github.com/harness-ecosystem/harness-tips",
+      "description": "DSH 使用技巧与快捷键速查表。",
+      "default_branch": "main",
+      "pushed_at": "2026-07-10T09:00:00Z",
+      "updated_at": "2026-07-10T09:00:00Z",
+      "stargazers_count": 12,
+      "topics": ["dsh-plugin", "docs", "tutorial"],
+      "owner": { "login": "harness-ecosystem" },
+      "_manifest": null,
+      "_release": null
+    }
+  ]
+}

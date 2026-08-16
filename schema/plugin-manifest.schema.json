@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness.workshop/schema/plugin-manifest.schema.json",
+  "title": "PluginManifest",
+  "description": "Harness 创意工坊 (Harness Workshop) 插件清单标准结构。每个可分发扩展都必须符合该结构，以支撑搜索、排序、分类筛选与订阅管理。",
+  "type": "object",
+  "required": ["id", "title", "author", "stats", "update_time", "tags", "thumbnail"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-_]*$",
+      "description": "唯一标识符，kebab-case。详情页路由与订阅列表以此为准。"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "插件标题，显示于卡片与详情页。"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "description": "作者名（可为 'Harness 官方'、团队名或个人昵称）。"
+    },
+    "stats": {
+      "type": "object",
+      "required": ["subscribers", "rating", "views"],
+      "additionalProperties": true,
+      "properties": {
+        "subscribers": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "订阅数。用于「最多订阅」排序与卡片订阅按钮计数。"
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "description": "评分（0–5，一位小数），驱动星级显示。"
+        },
+        "rating_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "评分人数（可选扩展），用于评分排序的次级比较。"
+        },
+        "views": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "浏览量。参与「最热门」综合权重与「最多浏览」排序。"
+        }
+      }
+    },
+    "update_time": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "最后更新时间戳（Unix 毫秒）。用于「最近更新」排序与「X 天前更新」展示。"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "标签数组（如 'UI美化'、'效率工具'、'主题'），侧边栏标签过滤器与分类树映射依据。"
+    },
+    "thumbnail": {
+      "type": "string",
+      "description": "封面图路径（相对本清单所在目录，或完整 URL）。16:9 为最佳比例。"
+    },
+    "version": {
+      "type": "string",
+      "description": "版本号（可选），如 '1.4.2'。详情页展示，安装流程以此为准。"
+    },
+    "source": {
+      "type": "object",
+      "description": "分发源（可选）：订阅后自动安装的下载地址。当前为演示安装（前端模拟进度）；真实安装器应据此下载包、校验 sha256 并注册进 DSH。",
+      "required": ["type", "url"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["github", "url"],
+          "description": "分发源类型：github = 源码仓库页；url = 直接安装包地址。"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "仓库页或安装包地址（详情页「GitHub 源码」入口与安装流程共用）。"
+        },
+        "sha256": {
+          "type": "string",
+          "description": "安装包完整性校验值（可选，真实安装器校验用）。"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "简短描述，卡片展示两行；详情页展示全文（支持 \\n\\n 分段与 **加粗** 语法）。"
+    },
+    "changelog": {
+      "type": "array",
+      "description": "更新日志（可选），详情页时间线展示。",
+      "items": {
+        "type": "object",
+        "required": ["version", "date", "notes"],
+        "properties": {
+          "version": { "type": "string", "description": "版本号，如 '1.4.2'。" },
+          "date": { "type": "integer", "minimum": 0, "description": "发布日期（Unix 毫秒）。" },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "逐条更新说明。"
+          }
+        }
+      }
+    },
+    "comments": {
+      "type": "array",
+      "description": "评论列表（可选），详情页评论区展示。",
+      "items": {
+        "type": "object",
+        "required": ["author", "time", "content"],
+        "properties": {
+          "author": { "type": "string", "description": "评论者昵称。" },
+          "avatar": { "type": "string", "description": "头像颜色（hex）或头像图路径（可选）。" },
+          "time": { "type": "integer", "minimum": 0, "description": "评论时间（Unix 毫秒）。" },
+          "content": { "type": "string", "description": "评论正文。" },
+          "likes": { "type": "integer", "minimum": 0, "description": "点赞数（可选）。" }
+        }
+      }
+    },
+    "compat": {
+      "type": "object",
+      "description": "兼容性信息（可选扩展）。",
+      "properties": {
+        "dsh": { "type": "string", "description": "兼容的 DSH 版本范围，如 '>=0.1.0-rc.5'。" },
+        "platform": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["win32", "darwin", "linux", "web"] },
+          "description": "支持平台。"
+        }
+      }
+    }
+  }
+}

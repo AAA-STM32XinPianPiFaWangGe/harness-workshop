@@ -1,0 +1,45 @@
+{
+  "name": "harness-workshop",
+  "version": "1.2.0",
+  "description": "Harness 创意工坊 — 复刻 Steam 创意工坊的 DSH 核心插件（浏览/筛选/订阅/详情/评论）",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "fetch": "node scripts/fetch-github.mjs",
+    "refresh": "npm run fetch && npm run build",
+    "thumbs": "node scripts/generate-thumbs.mjs",
+    "data": "node scripts/generate-data-js.mjs",
+    "test": "node scripts/smoke-test.mjs",
+    "test:bundle": "node scripts/test-bundle.mjs",
+    "test:all": "npm run test && npm run test:bundle",
+    "verify:install": "node scripts/verify-real-install.cjs",
+    "build:web": "npm run thumbs && npm run data",
+    "build:bundle": "node scripts/build-dsh-bundle.mjs",
+    "build": "npm run build:web && npm run build:bundle"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": true,
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-cordis-client-runner",
+        "@deepseek-ai/dsh-client-runtime"
+      ]
+    }
+  }
+}
