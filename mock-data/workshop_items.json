@@ -3,6 +3,30 @@
   "note": "由 scripts/fetch-github.mjs 从 GitHub 拉取（topic:dsh-plugin，2026-08-15T15:23:48.721Z）；0 个含 plugin.manifest.json，3 个可真实安装",
   "items": [
     {
+      "id": "hw-demo-plugin",
+      "title": "HW Demo 插件（真实安装验证）",
+      "author": "Harness 官方",
+      "stats": {
+        "subscribers": 1,
+        "rating": 5,
+        "rating_count": 1,
+        "views": 10
+      },
+      "update_time": 1786924800000,
+      "tags": [
+        "UI美化",
+        "效率工具"
+      ],
+      "thumbnail": "thumbs/hw-demo-plugin.svg",
+      "version": "0.1.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/AAA-STM32XinPianPiFaWangGe/hw-demo-plugin",
+        "install": "github"
+      },
+      "description": "真实安装链路验证插件：订阅后由创意工坊安装到 DSH，刷新页面后侧边栏底部出现「HW Demo」按钮。"
+    },
+    {
       "id": "dsh-longtask-orchestrator",
       "title": "dsh-longtask-orchestrator",
       "author": "rocker2018-droid",
