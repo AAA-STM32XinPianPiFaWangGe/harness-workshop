@@ -28,7 +28,7 @@
 
   const SORTS = {
     popular:      { label: '最热门',     desc: '综合热度权重' },
-    subscribers:  { label: '最多订阅',   desc: '按订阅数降序' },
+    subscribers:  { label: '最多复刻',   desc: '按 GitHub 复刻数降序' },
     updated:      { label: '最近更新',   desc: '按更新时间降序' },
     rating:       { label: '最多星标',   desc: '按 GitHub 星标数降序' },
     views:        { label: '最多浏览',   desc: '按浏览量降序' },
@@ -293,7 +293,7 @@
     const arr = [...list]
     switch (state.sort) {
       case 'subscribers':
-        return arr.sort((a, b) => (b.stats?.subscribers ?? 0) - (a.stats?.subscribers ?? 0))
+        return arr.sort((a, b) => (b.stats?.forks ?? 0) - (a.stats?.forks ?? 0) || (b.stats?.subscribers ?? 0) - (a.stats?.subscribers ?? 0))
       case 'views':
         return arr.sort((a, b) => (b.stats?.views ?? 0) - (a.stats?.views ?? 0))
       case 'updated':
